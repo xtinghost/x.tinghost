@@ -1,170 +1,235 @@
 /* --- 1. Global & Font Setup --- */
 body {
-    background-color: #e9e5d7; /* A soft, off-white background */
+    /* Set up the dark, ink-like color and use the new sketchy font */
+    background-color: #e9e5d7; 
     margin: 0;
     padding: 0;
-    font-family: 'Kalam', cursive; /* Use a handwriting font for the main text */
-    color: #4a4a4a; /* Dark gray for a "pen ink" color */
-    display: flex; /* Centers the journal page */
+    font-family: 'Nanum Pen Script', cursive; 
+    color: #333; 
+    display: flex; 
     justify-content: center;
     padding: 40px 20px;
+    position: relative;
+    /* Apply the star falling animation to the entire body */
+    overflow-x: hidden; 
 }
 
-h1, h2 {
-    font-family: 'Nanum Pen Script', cursive; /* A more distinct handwriting font for headings */
-    border-bottom: 2px solid #a3b0a7; /* Simple line under headings */
-    padding-bottom: 5px;
-    margin-top: 10px;
+/* Base style for elements that look hand-drawn */
+.sketchy-text {
+    font-family: 'Permanent Marker', cursive;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* --- 2. Journal Page Styling --- */
 .journal-page {
     width: 100%;
-    max-width: 800px;
-    background-color: #fcfcf4; /* Lighter color for the paper itself */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Shadow to make it look lifted like a book */
-    padding: 40px;
+    max-width: 900px;
+    background-color: #fcfcf4; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    padding: 30px;
     min-height: 90vh;
-    border: 1px solid #c9c5b6; /* Border for the edge of the paper */
+    border: 1px solid #c9c5b6; 
     position: relative;
-    line-height: 1.6;
+    line-height: 1.5;
+    z-index: 10; /* Keep content above the background stars */
 }
 
-.journal-entry {
-    margin-top: 30px;
-    padding: 20px;
-    border-left: 5px solid #ffcc66; /* A colored line on the side, like a journal margin */
-}
-
-/* --- 3. Navigation Styling (Tabs/Links) --- */
-.main-nav {
+/* === 3. HERO SECTION STYLES === */
+.hero-section {
     display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    border-bottom: 1px dashed #a3b0a7;
-    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+    border-bottom: 3px dashed #333; /* Sketchy divider line */
 }
 
-.nav-item {
-    text-decoration: none;
-    color: #5d676d;
-    font-weight: bold;
-    padding: 5px 10px;
-    transition: color 0.3s;
-}
-
-.nav-item:hover, .nav-item.active {
-    color: #d17a7a; /* A cute red/pink hover color */
-    text-decoration: underline;
-}
-
-/* --- 4. Art Showcase Styling --- */
-.quick-showcase {
+.landing-art-container {
+    flex-basis: 40%;
     text-align: center;
-    margin-top: 25px;
 }
 
-.featured-image {
-    max-width: 90%;
+.landing-art {
+    max-width: 100%;
     height: auto;
-    border: 5px solid #fcfcf4; /* A light border to make it pop */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    margin-top: 15px;
+    /* Sketchy border effect */
+    border: 4px solid #333; 
+    padding: 5px;
+    background: #fff;
 }
 
-/* --- 5. Draggable Character Styling --- */
+.welcome-text {
+    flex-basis: 55%;
+    text-align: center;
+}
+
+.welcome-text h1 {
+    font-size: 4em;
+    color: #ff5757; /* A strong, contrasting color for the main title */
+    border: none;
+    line-height: 1.1;
+    margin: 0 0 20px 0;
+}
+
+.about-me-link-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.small-char {
+    width: 50px;
+    height: auto;
+}
+
+/* Floating button style */
+.floating-button {
+    text-decoration: none;
+    color: #333;
+    background-color: #ffb347; /* Cute orange/yellow background */
+    padding: 10px 20px;
+    border: 3px solid #333;
+    border-radius: 5px;
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 5px 5px 0px 0px #333; /* Initial "floating" shadow */
+}
+
+.floating-button:hover {
+    /* Push the button down on hover */
+    transform: translate(2px, 2px); 
+    box-shadow: 3px 3px 0px 0px #333; 
+    background-color: #ff9933;
+}
+
+/* === 4. WORK SECTION STYLES === */
+.work-section {
+    padding-top: 40px;
+    text-align: center;
+}
+
+.work-title {
+    font-size: 3em;
+    color: #333;
+    border-bottom: 5px wavy #d17a7a; /* Wavy line for the sketchy feel */
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.work-card {
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+    padding: 40px 10px;
+    border: 3px solid #333;
+    border-radius: 8px;
+    display: block;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Floating effect for grid cards */
+.floating-card {
+    transition: all 0.3s ease-in-out;
+    box-shadow: 8px 8px 0px 0px #333; /* Stronger initial shadow */
+}
+
+.floating-card:hover {
+    transform: translate(4px, 4px); /* Moves when hovered */
+    box-shadow: 4px 4px 0px 0px #333;
+    background-color: #ffe0b3; /* Light change on hover */
+}
+
+.work-card span {
+    font-size: 1.5em;
+}
+
+/* Placeholder card for future work */
+.placeholder {
+    background-color: #e0e0e0;
+    color: #777;
+}
+
+/* --- 5. Draggable Character Styling (Retained) --- */
 #cute-character {
-    position: absolute; /* Crucial for positioning and dragging */
+    position: absolute; 
     top: 50px;
     left: 10px;
-    z-index: 1000; /* Ensures it stays on top of everything */
-    width: 100px; /* Adjust size of your character here */
+    z-index: 1000; 
+    width: 100px; 
     height: auto;
-    cursor: grab; /* Shows the user they can drag it */
-    transition: transform 0.1s ease-out; /* Smooth movement */
+    cursor: grab; 
 }
-
 #cute-character img {
     width: 100%;
     display: block;
 }
 
-
-/* --- Horizontal Scroll Gallery Styles --- */
-
-.scroll-gallery {
-    /* Enables flexbox layout for horizontal arrangement */
-    display: flex; 
-    
-    /* Prevents items from wrapping to the next line */
-    flex-wrap: nowrap; 
-    
-    /* Crucial: Enables horizontal scrolling when content overflows */
-    overflow-x: scroll; 
-    
-    /* Hides the vertical scrollbar */
-    overflow-y: hidden; 
-    
-    /* Adds internal padding and space around the items */
-    padding: 20px 0; 
-    
-    /* Adds a slight shadow to suggest the content is below the fold/scrollable */
-    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.05);
-    
-    /* Optional: Makes the scroll smoother (mostly works on Mac/Chrome) */
-    scroll-behavior: smooth;
+/* === 6. STAR FALLING ANIMATION (CSS ONLY) === */
+/* The star element template */
+.star {
+    position: absolute;
+    top: -10px; /* Start above the viewport */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="%23FFD700" d="M5 0l1.5 3L10 3.5l-3 1.5L8.5 8.5L5 7L1.5 8.5L2 5.5L0 3.5l3.5-.5z"/></svg>') no-repeat center center;
+    background-size: contain;
+    width: 10px;
+    height: 10px;
+    opacity: 0.8;
+    /* Apply the falling animation */
+    animation: fall linear infinite;
+    z-index: 1; 
 }
 
-/* Styling for the individual art cards */
-.art-card {
-    /* Ensures the card takes up only the space specified below */
-    flex: 0 0 auto; 
-    
-    /* Sets the width of each card/illustration */
-    width: 300px; 
-    
-    /* Space between items */
-    margin-right: 25px; 
-    
-    text-align: center;
-    padding: 15px;
-    background-color: #ffffff; /* White background for the card */
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+/* Animation definition: falling motion and fading */
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg); /* Fall the height of the viewport */
+        opacity: 0;
+    }
 }
 
-.gallery-image {
+/* Create multiple stars with different sizes, speeds, and starting positions */
+/* We use a loop in CSS to manually create different star instances */
+body::before {
+    content: '';
+    position: absolute;
     width: 100%;
-    /* Keep aspect ratio consistent for a neat gallery */
-    aspect-ratio: 16 / 9; 
-    object-fit: cover; /* Ensures the image fills the space without distortion */
-    border-radius: 4px;
-    margin-bottom: 10px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    /* Manually generate 5 stars with varying properties using box-shadow (complex, but CSS-only) */
+    box-shadow: 
+        /* X-pos Y-pos Size Speed Delay */
+        10vw -10vh 2px #FFD700,
+        25vw -20vh 3px #FFD700,
+        50vw -5vh 1px #FFD700,
+        70vw -30vh 4px #FFD700,
+        90vw -15vh 2px #FFD700;
+    
+    /* Apply animation to the shadows */
+    animation: fall-shadow 20s linear infinite;
 }
 
-.art-card h3 {
-    margin: 5px 0;
-    font-size: 1.1em;
-}
-
-.scroll-hint {
-    text-align: right;
-    font-style: italic;
-    color: #6a6a6a;
-    margin-top: 10px;
-}
-
-/* --- Optional: Styling the Scrollbar (for a cleaner look) --- */
-/* Note: This works primarily on Webkit browsers (Chrome, Safari) */
-.scroll-gallery::-webkit-scrollbar {
-    height: 8px; /* Height of the horizontal scrollbar */
-}
-
-.scroll-gallery::-webkit-scrollbar-thumb {
-    background: #d17a7a; /* Color of the scrollbar thumb (a cute pink) */
-    border-radius: 4px;
-}
-
-.scroll-gallery::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Color of the scrollbar track */
+@keyframes fall-shadow {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
 }
