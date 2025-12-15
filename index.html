@@ -3,45 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Art Journal - Home</title>
+    <title>My Sketchy Art World</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    
     <div id="cute-character" class="draggable">
-        <img src="assets/images/cute-character.png" alt="Mascot Character" title="Drag me!">
+        <img src="assets/images/cute-mascot.png" alt="Mascot Character" title="Drag me!">
     </div>
 
     <div class="journal-page">
-        <header>
-            <h1>My Digital Sketchbook & Portfolio</h1>
-            <p class="subtitle">A collection of illustrations, sketches, and passion projects.</p>
-        </header>
-
-        <nav class="main-nav">
-            <a href="index.html" class="nav-item active">Home</a>
-            <a href="illustration.html" class="nav-item">Illustration</a>
-            <a href="sketch.html" class="nav-item">Sketchbook</a>
-            <a href="contact.html" class="nav-item">Contact</a>
-        </nav>
-
-        <section class="journal-entry">
-            <h2>👋 Welcome!</h2>
-            <p>Hello! I'm delighted you stopped by my little corner of the internet. This journal is where I document my art journey, from quick sketches to fully rendered digital illustrations.</p>
+        
+        <section class="hero-section">
+            <div class="landing-art-container">
+                <img src="assets/images/main-landing-character.png" alt="Aggressive Character Art" class="landing-art">
+            </div>
             
-            <div class="quick-showcase">
-                <h3>Featured Piece</h3>
-                <img src="assets/images/featured-art.jpg" alt="A featured piece of art" class="featured-image">
-                <p class="caption">"The City Sleeper" - Digital Painting, 2025.</p>
+            <div class="welcome-text">
+                <h1>Hi! Welcome To My World</h1>
+                
+                <div class="about-me-link-group">
+                    <img src="assets/images/small-about-me-char.png" alt="Small Character Art" class="small-char">
+                    
+                    <a href="contact.html" class="floating-button">
+                        <span class="sketchy-text">About Me</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="work-section">
+            <h2 class="work-title">My Work</h2>
+            
+            <div class="work-grid">
+                
+                <a href="illustration.html" class="work-card floating-card">
+                    <span class="sketchy-text">Illustration</span>
+                </a>
+                
+                <a href="sketch.html" class="work-card floating-card">
+                    <span class="sketchy-text">Sketchbook</span>
+                </a>
+
+                <a href="#" class="work-card floating-card placeholder">
+                    <span class="sketchy-text">Comics</span>
+                </a>
+
             </div>
         </section>
 
         <footer>
-            <p>&copy; 2025 [Your Name] Art. All rights reserved.</p>
+            <p class="footer-text">&copy; 2025 [Your Name]. All rights reserved.</p>
         </footer>
     </div>
-
+    
     <script src="drag.js"></script>
 </body>
 </html>
