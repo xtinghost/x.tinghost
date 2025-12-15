@@ -4,7 +4,7 @@ body {
     background-color: #e9e5d7; 
     margin: 0;
     padding: 0;
-    font-family: 'Nanum Pen Script', cursive; 
+    font-family: 'Georgia', cursive; 
     color: #333; 
     display: flex; 
     justify-content: center;
@@ -16,7 +16,7 @@ body {
 
 /* Base style for elements that look hand-drawn */
 .sketchy-text {
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Georgia', cursive;
     font-weight: 400;
     letter-spacing: 1px;
     text-transform: uppercase;
