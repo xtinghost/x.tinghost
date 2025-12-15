@@ -162,7 +162,7 @@ body {
 /* --- 5. Draggable Character Styling (Retained) --- */
 #cute-character {
     position: absolute; 
-    top: 500px;
+    top: 50px;
     left: 10px;
     z-index: 1000; 
     width: 100px; 
