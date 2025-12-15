@@ -88,3 +88,83 @@ h1, h2 {
     width: 100%;
     display: block;
 }
+
+
+/* --- Horizontal Scroll Gallery Styles --- */
+
+.scroll-gallery {
+    /* Enables flexbox layout for horizontal arrangement */
+    display: flex; 
+    
+    /* Prevents items from wrapping to the next line */
+    flex-wrap: nowrap; 
+    
+    /* Crucial: Enables horizontal scrolling when content overflows */
+    overflow-x: scroll; 
+    
+    /* Hides the vertical scrollbar */
+    overflow-y: hidden; 
+    
+    /* Adds internal padding and space around the items */
+    padding: 20px 0; 
+    
+    /* Adds a slight shadow to suggest the content is below the fold/scrollable */
+    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.05);
+    
+    /* Optional: Makes the scroll smoother (mostly works on Mac/Chrome) */
+    scroll-behavior: smooth;
+}
+
+/* Styling for the individual art cards */
+.art-card {
+    /* Ensures the card takes up only the space specified below */
+    flex: 0 0 auto; 
+    
+    /* Sets the width of each card/illustration */
+    width: 300px; 
+    
+    /* Space between items */
+    margin-right: 25px; 
+    
+    text-align: center;
+    padding: 15px;
+    background-color: #ffffff; /* White background for the card */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-image {
+    width: 100%;
+    /* Keep aspect ratio consistent for a neat gallery */
+    aspect-ratio: 16 / 9; 
+    object-fit: cover; /* Ensures the image fills the space without distortion */
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.art-card h3 {
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+.scroll-hint {
+    text-align: right;
+    font-style: italic;
+    color: #6a6a6a;
+    margin-top: 10px;
+}
+
+/* --- Optional: Styling the Scrollbar (for a cleaner look) --- */
+/* Note: This works primarily on Webkit browsers (Chrome, Safari) */
+.scroll-gallery::-webkit-scrollbar {
+    height: 8px; /* Height of the horizontal scrollbar */
+}
+
+.scroll-gallery::-webkit-scrollbar-thumb {
+    background: #d17a7a; /* Color of the scrollbar thumb (a cute pink) */
+    border-radius: 4px;
+}
+
+.scroll-gallery::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the scrollbar track */
+}
