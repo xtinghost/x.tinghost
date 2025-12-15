@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isDragging = true;
         // Calculate the initial offset (where the mouse clicked relative to the element's top-left corner)
         offsetX = e.clientX - character.getBoundingClientRect().left;
-        offsetY = e.clientY - character.getBoundingClientRect().center;
+        offsetY = e.clientY - character.getBoundingClientRect().top;
         character.style.cursor = 'grabbing';
     });
 
