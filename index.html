@@ -66,5 +66,20 @@
     </div>
     
     <script src="drag.js"></script>
+
+    <script>
+    // Disable the context menu (right-click)
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // Optional: Disable drag-and-drop to prevent easy saving
+    document.addEventListener('dragstart', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    });
+    </script>
+    
 </body>
 </html>
