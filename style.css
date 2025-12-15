@@ -174,3 +174,9 @@ body {
     display: block;
 }
 
+.insta-img {
+    /* Set the size for the image icon */
+    width: 20px; 
+    height: 20px;
+    display: block;
+}
