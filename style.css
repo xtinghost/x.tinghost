@@ -1,7 +1,7 @@
 /* --- 1. Global & Font Setup --- */
 body {
     /* Set up the dark, ink-like color and use the new sketchy font */
-    background-color: #e9e5d7; 
+    background-color: #FFFFFF; 
     margin: 0;
     padding: 0;
     font-family: 'Georgia', cursive; 
@@ -9,7 +9,6 @@ body {
     display: flex; 
     justify-content: center;
     padding: 40px 20px;
-    position: relative;
     /* Apply the star falling animation to the entire body */
     overflow-x: hidden; 
 }
@@ -176,60 +175,4 @@ body {
     display: block;
 }
 
-/* === 6. STAR FALLING ANIMATION (CSS ONLY) === */
-/* The star element template */
-.star {
-    position: absolute;
-    top: -10px; /* Start above the viewport */
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="%23FFD700" d="M5 0l1.5 3L10 3.5l-3 1.5L8.5 8.5L5 7L1.5 8.5L2 5.5L0 3.5l3.5-.5z"/></svg>') no-repeat center center;
-    background-size: contain;
-    width: 10px;
-    height: 10px;
-    opacity: 0.8;
-    /* Apply the falling animation */
-    animation: fall linear infinite;
-    z-index: 1; 
-}
 
-/* Animation definition: falling motion and fading */
-@keyframes fall {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg); /* Fall the height of the viewport */
-        opacity: 0;
-    }
-}
-
-/* Create multiple stars with different sizes, speeds, and starting positions */
-/* We use a loop in CSS to manually create different star instances */
-body::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    /* Manually generate 5 stars with varying properties using box-shadow (complex, but CSS-only) */
-    box-shadow: 
-        /* X-pos Y-pos Size Speed Delay */
-        10vw -10vh 2px #FFD700,
-        25vw -20vh 3px #FFD700,
-        50vw -5vh 1px #FFD700,
-        70vw -30vh 4px #FFD700,
-        90vw -15vh 2px #FFD700;
-    
-    /* Apply animation to the shadows */
-    animation: fall-shadow 20s linear infinite;
-}
-
-@keyframes fall-shadow {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(100vh);
-    }
-}
