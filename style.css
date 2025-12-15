@@ -1,0 +1,90 @@
+/* --- 1. Global & Font Setup --- */
+body {
+    background-color: #e9e5d7; /* A soft, off-white background */
+    margin: 0;
+    padding: 0;
+    font-family: 'Kalam', cursive; /* Use a handwriting font for the main text */
+    color: #4a4a4a; /* Dark gray for a "pen ink" color */
+    display: flex; /* Centers the journal page */
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+h1, h2 {
+    font-family: 'Nanum Pen Script', cursive; /* A more distinct handwriting font for headings */
+    border-bottom: 2px solid #a3b0a7; /* Simple line under headings */
+    padding-bottom: 5px;
+    margin-top: 10px;
+}
+
+/* --- 2. Journal Page Styling --- */
+.journal-page {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fcfcf4; /* Lighter color for the paper itself */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Shadow to make it look lifted like a book */
+    padding: 40px;
+    min-height: 90vh;
+    border: 1px solid #c9c5b6; /* Border for the edge of the paper */
+    position: relative;
+    line-height: 1.6;
+}
+
+.journal-entry {
+    margin-top: 30px;
+    padding: 20px;
+    border-left: 5px solid #ffcc66; /* A colored line on the side, like a journal margin */
+}
+
+/* --- 3. Navigation Styling (Tabs/Links) --- */
+.main-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-bottom: 1px dashed #a3b0a7;
+    margin-bottom: 20px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #5d676d;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: #d17a7a; /* A cute red/pink hover color */
+    text-decoration: underline;
+}
+
+/* --- 4. Art Showcase Styling --- */
+.quick-showcase {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.featured-image {
+    max-width: 90%;
+    height: auto;
+    border: 5px solid #fcfcf4; /* A light border to make it pop */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 15px;
+}
+
+/* --- 5. Draggable Character Styling --- */
+#cute-character {
+    position: absolute; /* Crucial for positioning and dragging */
+    top: 50px;
+    left: 10px;
+    z-index: 1000; /* Ensures it stays on top of everything */
+    width: 100px; /* Adjust size of your character here */
+    height: auto;
+    cursor: grab; /* Shows the user they can drag it */
+    transition: transform 0.1s ease-out; /* Smooth movement */
+}
+
+#cute-character img {
+    width: 100%;
+    display: block;
+}
