@@ -174,4 +174,30 @@ body {
     display: block;
 }
 
+/* --- Icon Button Style Adjustments --- */
 
+.icon-button {
+    /* Make the button square/small for the icon */
+    width: 60px; 
+    height: 60px;
+    padding: 0; /* Remove existing padding */
+    
+    /* Center the SVG icon inside the button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.insta-icon {
+    /* Set the size and color of the icon */
+    width: 28px;
+    height: 28px;
+    stroke: #333; /* Icon line color (black/ink) */
+}
+
+/* Ensure the floating button hover still works on the new size */
+.floating-button:hover {
+    transform: translate(2px, 2px); 
+    box-shadow: 3px 3px 0px 0px #333; 
+    background-color: #ff9933;
+}
