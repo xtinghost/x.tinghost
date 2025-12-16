@@ -32,7 +32,7 @@ body {
     border: 1px solid #c9c5b6; 
     position: relative;
     line-height: 1.5;
-    z-index: 10; /* Keep content above the background stars */
+    /*z-index: 10; /* Keep content above the background stars */
 }
 
 /* === 3. HERO SECTION STYLES === */
