@@ -183,9 +183,8 @@ body {
     /* Set the default desktop size (100px recommended for easy collection) */
     width: 100px; 
     height: auto; 
-    /* Ensures the initial position works with the drag.js script */
-    top: 0; 
-    left: 0;
+   /* NEW: Ensure characters don't disappear off the right side initially */
+    max-width: 95vw;
 }
 
 /* NEW: Constrain the image size inside the container */
