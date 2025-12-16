@@ -79,9 +79,8 @@
     
     .about-portrait {
         position: relative; 
-        height: 40vh; 
+        height: 100%; 
         object-position: center top;
-        opacity: 1; 
     }
     
     .bio-text-overlay {
