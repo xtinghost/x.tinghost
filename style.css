@@ -196,7 +196,7 @@ body {
 
 /* === 5. WORK SECTION STYLES === */
 .work-section {
-    padding: 40px;
+    padding: 40px 0 40px 0;
     text-align: center;
 }
 
