@@ -3,61 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Illustration</title>
+    <title>Illustrations - My Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Nanum+Pen+Script&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    
     <div id="cute-character" class="draggable">
-        <img src="assets/images/cute-character.png" alt="Mascot Character" title="Drag me!">
+        <img src="assets/images/cute-mascot.gif" alt="Mascot Character" title="Drag me!">
     </div>
 
     <div class="journal-page">
-        <header>
-            <h1>My Digital Sketchbook & Portfolio</h1>
-            <p class="subtitle">A collection of illustrations, sketches, and passion projects.</p>
+        
+        <header class="hero-section">
+            <nav class="main-nav">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="illustration.html" class="nav-item active">Illustration</a>
+                <a href="sketch.html" class="nav-item">Sketchbook</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+            </nav>
         </header>
 
-        <nav class="main-nav">
-            <a href="index.html" class="nav-item active">Home</a>
-            <a href="illustration.html" class="nav-item">Illustration</a>
-        </nav>
+        <section class="journal-entry illustration-section">
+            <h2 class="work-title sketchy-text">Finished Illustrations</h2>
+            <p class="intro-text">A collection of my polished character and environmental artwork.</p>
 
-<section class="journal-entry">
-    <h2>✨ My Latest Illustrations</h2>
-    <p>A curated collection of my completed digital and traditional pieces, focusing on character design and storytelling.</p>
+            <div class="illustration-scroll-box">
+                
+                <div class="illustration-item" onclick="openLightbox('assets/images/full_art1.jpg', 'Character design exploring light and shadow.')">
+                    <img src="assets/images/art_thumb1.jpg" alt="Artwork 1 Thumbnail" class="illustration-thumb">
+                    <div class="info-overlay">Click to Zoom</div>
+                </div>
 
-    <div class="scroll-gallery">
+                <div class="illustration-item" onclick="openLightbox('assets/images/full_art2.jpg', 'Digital painting of a rainy city street.')">
+                    <img src="assets/images/art_thumb2.jpg" alt="Artwork 2 Thumbnail" class="illustration-thumb">
+                    <div class="info-overlay">Click to Zoom</div>
+                </div>
+                
+                <div class="illustration-item" onclick="openLightbox('assets/images/full_art3.jpg', 'Concept art for a fantasy warrior.')">
+                    <img src="assets/images/art_thumb3.jpg" alt="Artwork 3 Thumbnail" class="illustration-thumb">
+                    <div class="info-overlay">Click to Zoom</div>
+                </div>
 
-        <div class="art-card">
-            <img src="assets/images/illus_forest_spirit.jpg" alt="A detailed illustration of a forest spirit character" class="gallery-image">
-            <h3>Forest Guardian</h3>
-            <p class="caption">**Digital Painting, 2024.** Software used: Procreate. Focused on environmental lighting.</p>
+                </div>
+        </section>
+
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="lightbox-close">&times;</span>
+            <div class="lightbox-content">
+                <img id="lightbox-image" src="" alt="Zoomed Artwork">
+                <p id="lightbox-caption" class="caption"></p>
+            </div>
         </div>
-
-        <div class="art-card">
-            <img src="assets/images/illus_city_concept.png" alt="Concept art of a futuristic city skyline with flying vehicles" class="gallery-image">
-            <h3>Neon Sprawl Concept</h3>
-            <p class="caption">**Concept Art, 2023.** Explored color theory in a cyberpunk setting.</p>
-        </div>
-
-        <div class="art-card">
-            <img src="assets/images/illus_portrait_pencil.jpg" alt="A grayscale pencil portrait drawing" class="gallery-image">
-            <h3>Pencil Study: Rain</h3>
-            <p class="caption">**Traditional Graphite, 2024.** A study in texture and form, created on sketchbook paper.</p>
-        </div>
-
-        </div>
-    
-    <p class="scroll-hint">➡️ **Scroll right** to see more work!</p>
-</section>
 
         <footer>
-            <p>&copy; 2025 [Your Name] Art. All rights reserved.</p>
+            <p class="footer-text">&copy; 2025 [Your Name]. All rights reserved.</p>
         </footer>
     </div>
-
+    
     <script src="drag.js"></script>
-</body>
+    </body>
 </html>
