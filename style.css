@@ -126,7 +126,7 @@ body {
 .work-card {
     text-decoration: none;
     color: #333;
-    background-color: #0095A3; /* blue */
+    background-color: #CF4891; /* pink */
     padding: 40px 10px;
     border: 3px solid #333;
     border-radius: 8px;
@@ -146,7 +146,7 @@ body {
 .floating-card:hover {
     transform: translate(4px, 4px); /* Moves when hovered */
     box-shadow: 4px 4px 0px 0px #333;
-    background-color: #CF4891; /* Pink change on hover */
+    background-color: #b2d335; /* green change on hover */
 }
 
 .work-card span {
