@@ -1,1 +1,21 @@
 
+.icon-button {
+    /* Set the clickable area to be slightly larger than the icon (e.g., 35px) */
+    width: 35px; 
+    height: 35px; 
+    padding: 0; 
+    
+    /* Center the icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+                
+}
+
+
+.insta-img {
+    /* Set the size for the image icon */
+    width: 30px; 
+    height: 30px;
+    display: block;
+}
