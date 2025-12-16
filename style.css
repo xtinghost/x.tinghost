@@ -228,3 +228,123 @@ body {
         font-size: 3em;
     }
 }
+
+/* --- 7. Illustration Page Styles --- */
+
+.illustration-scroll-box {
+    /* Critical for horizontal scrolling */
+    display: flex;
+    overflow-x: scroll; /* Allows scrolling right */
+    overflow-y: hidden; 
+    padding: 20px 0;
+    
+    /* Hides the scrollbar on most browsers */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    
+    /* Ensures items stay aligned */
+    align-items: flex-start;
+    gap: 30px; /* Space between illustrations */
+    
+    /* For snapping/slideshow effect on mobile */
+    scroll-snap-type: x mandatory; 
+}
+
+/* Hide the scrollbar for webkit browsers (Chrome, Safari) */
+.illustration-scroll-box::-webkit-scrollbar {
+    display: none;
+}
+
+.illustration-item {
+    /* DEFAULT: Desktop 3-column layout */
+    /* Calculate width to show 3 items plus the gap in between */
+    flex: 0 0 calc((100% / 3) - 20px); 
+    height: 300px; /* Fixed height for uniformity */
+    position: relative;
+    cursor: pointer;
+    border: 4px solid #333;
+    box-shadow: 4px 4px 0px 0px #333;
+    transition: all 0.2s;
+    scroll-snap-align: center; /* For smooth scrolling to each item */
+}
+
+.illustration-item:hover {
+    box-shadow: 6px 6px 0px 0px #333;
+    transform: translateY(-2px);
+}
+
+.illustration-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images fill the container without distortion */
+    display: block;
+}
+
+/* --- Mobile View: Single Item Slideshow --- */
+@media (max-width: 768px) {
+    .illustration-item {
+        /* CRITICAL: Shows only one item at a time (slideshow effect) */
+        flex: 0 0 95%; 
+        height: 250px;
+        /* Padding on the scroll box provides space around the item */
+    }
+}
+
+
+/* --- 8. Lightbox (Zoom-In) Styles --- */
+
+.lightbox {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 9999; /* On top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* Blurry Background Effect */
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px); /* For Safari support */
+    overflow: auto;
+    text-align: center;
+}
+
+.lightbox-content {
+    margin: 15% auto; /* Center vertically and horizontally */
+    padding: 20px;
+    background-color: transparent;
+    width: 90%;
+    max-width: 800px;
+    animation: zoom-in 0.3s;
+}
+
+#lightbox-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto;
+    border: 5px solid white;
+}
+
+#lightbox-caption {
+    color: white;
+    font-size: 1.2em;
+    font-family: Georgia, serif;
+    margin: 0;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+@keyframes zoom-in {
+    from {transform: scale(0.8);} 
+    to {transform: scale(1);}
+}
