@@ -2,14 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const characters = document.querySelectorAll('.draggable.collectible');
     const popup = document.getElementById('great-job-popup');
     
+    // Create map of targets and initialize collected status
     const targets = {};
+    const collected = {};
     document.querySelectorAll('.target-spot').forEach(target => {
         const charId = target.id.replace('target-', 'char-');
         targets[charId] = target;
+        collected[charId] = false;
     });
 
-    const collected = { 'char-1': false, 'char-2': false, 'char-3': false };
     const snapTolerance = 50; 
+    let activeDragChar = null; // Tracks the character currently being dragged
 
     // --- Initialization (Sets initial position and internal coordinates) ---
     characters.forEach(char => {
@@ -19,10 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         char.style.left = initialX + 'px';
         char.style.top = initialY + 'px';
         
-        // Internal tracking variables
         char.currentX = initialX;
         char.currentY = initialY;
-        char.isDragging = false;
         char.canDrag = true;
         char.dataset.id = char.id; 
     });
@@ -31,15 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Helper function to get the correct coordinates (mouse or touch) ---
     function getCoords(e) {
         if (e.touches && e.touches.length > 0) {
-            return {
-                x: e.touches[0].clientX,
-                y: e.touches[0].clientY
-            };
+            return { x: e.touches[0].clientX, y: e.touches[0].clientY };
         } else {
-            return {
-                x: e.clientX,
-                y: e.clientY
-            };
+            return { x: e.clientX, y: e.clientY };
         }
     }
 
@@ -51,23 +46,24 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault(); 
         
         const coords = getCoords(e);
+        const charRect = char.getBoundingClientRect();
         
         // Calculate the offset from the cursor to the character's top-left corner
-        const charRect = char.getBoundingClientRect();
         char.offsetX = coords.x - charRect.left;
         char.offsetY = coords.y - charRect.top;
         
-        char.isDragging = true;
+        activeDragChar = char; // Set the currently dragged character
         char.style.zIndex = 1001;
         char.style.cursor = 'grabbing';
     }
 
     // --- STOP DRAGGING ---
     function dragEnd(e) {
-        let char = e.currentTarget;
-        if (!char.isDragging) return;
+        if (!activeDragChar) return;
         
-        char.isDragging = false;
+        let char = activeDragChar;
+        activeDragChar = null; // Clear the active character
+        
         char.style.zIndex = 1000;
         char.style.cursor = 'grab';
         
@@ -82,9 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- DRAG MOVE ---
     function drag(e) {
-        let char = e.currentTarget;
-        if (!char.isDragging) return;
+        if (!activeDragChar) return;
         
+        let char = activeDragChar;
         e.preventDefault();
 
         const coords = getCoords(e);
@@ -98,9 +94,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- COLLECTION LOGIC ---
-
+    // --- COLLECTION LOGIC (Same as before) ---
     function checkForSnap(char, target) {
+        // ... (The code for checking snap remains the same)
         const charRect = char.getBoundingClientRect();
         const targetRect = target.getBoundingClientRect();
         
@@ -113,16 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const isNearY = Math.abs(charCenterY - targetCenterY) <= snapTolerance;
 
         if (isNearX && isNearY) {
-            // SNAP TO TARGET!
             char.style.transition = 'top 0.3s, left 0.3s';
-            
-            // Lock the character's absolute position relative to the viewport
-            char.style.left = targetRect.left + 'px'; 
-            char.style.top = targetRect.top + 'px';
-            
+            char.style.left = targetRect.left + window.scrollX + 'px'; // Use window scroll to fix position
+            char.style.top = targetRect.top + window.scrollY + 'px';
+
             collected[char.dataset.id] = true;
             char.canDrag = false; 
-
             target.classList.add('target-collected'); 
             checkCollectionComplete();
         } else {
@@ -135,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (allCollected) {
             popup.classList.remove('hidden');
-            // Re-enable dragging after the popup appears if the user wants to keep moving them
             characters.forEach(char => { char.canDrag = true; }); 
 
             setTimeout(() => {
@@ -146,34 +137,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Attach Event Listeners ---
     characters.forEach(char => {
-        // Mouse Events
+        // Mouse Start
         char.addEventListener('mousedown', dragStart, false);
-        
-        // Touch Events
+        // Touch Start
         char.addEventListener('touchstart', dragStart, false);
-        char.addEventListener('touchmove', drag, false);
-        char.addEventListener('touchend', dragEnd, false);
     });
     
-    // Attach drag and end listeners to the document (safest method)
-    document.addEventListener('mousemove', (e) => {
-        characters.forEach(char => {
-            if (char.isDragging) drag({ currentTarget: char, ...e });
-        });
-    }, false);
-    
-    document.addEventListener('mouseup', (e) => {
-        characters.forEach(char => dragEnd({ currentTarget: char }));
-    }, false);
-    
-    // Fallback for touchmove on document (might be needed for complex layouts)
-    document.addEventListener('touchmove', (e) => {
-        characters.forEach(char => {
-            if (char.isDragging) drag({ currentTarget: char, ...e });
-        });
-    }, false);
-
-    document.addEventListener('touchend', (e) => {
-        characters.forEach(char => dragEnd({ currentTarget: char }));
-    }, false);
+    // Global Listeners (Attach to document for reliability)
+    document.addEventListener('mousemove', drag, false);
+    document.addEventListener('mouseup', dragEnd, false);
+    document.addEventListener('touchmove', drag, false);
+    document.addEventListener('touchend', dragEnd, false);
 });
