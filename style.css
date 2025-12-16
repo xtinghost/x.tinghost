@@ -194,3 +194,37 @@ body {
     height: 20px;
     display: block;
 }
+
+/* --- 6. Mobile Responsiveness (Max Width 600px) --- */
+@media (max-width: 600px) {
+    /* 1. Stack the main art and welcome text vertically */
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    /* 2. Full width for the image and text blocks */
+    .landing-art-container, 
+    .welcome-text {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+    }
+    
+    /* 3. Stack the About Me / Instagram links vertically */
+    .about-me-link-group {
+        /* Set to column for vertical stacking */
+        flex-direction: column; 
+        align-items: center; 
+        gap: 10px;
+    }
+    
+    /* 4. Switch the main work grid to a single column */
+    .work-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 5. Shrink the main title */
+    .welcome-text h1 {
+        font-size: 3em;
+    }
+}
