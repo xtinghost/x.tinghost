@@ -110,7 +110,6 @@ body {
     text-align: center;
     padding: 40px 0;
     margin: 40px 0;
-    padding: 30px 0;
     border-bottom: 3px dashed #333; /* Sketchy divider line */
 }
 
@@ -151,6 +150,7 @@ body {
     opacity: 1; 
 }
 
+
 /* --- Great Job Popup Styles --- */
 .great-job-popup {
     position: fixed;
@@ -174,10 +174,25 @@ body {
     display: none;
 }
 
-/* Ensure the draggable characters use absolute positioning (already defined, but good to check) */
 .draggable {
-    position: absolute;
-    /* touch-action: none; is also important here */
+    position: absolute; 
+    z-index: 1000; 
+    cursor: grab; 
+    /* CRITICAL FIX FOR MOBILE DRAGGING */
+    touch-action: none; 
+    /* Set the default desktop size (100px recommended for easy collection) */
+    width: 100px; 
+    height: auto; 
+    /* Ensures the initial position works with the drag.js script */
+    top: 0; 
+    left: 0;
+}
+
+/* NEW: Constrain the image size inside the container */
+.draggable img {
+    max-width: 100%; /* Image never exceeds 100px width */
+    height: auto; 
+    display: block;
 }
 
 
@@ -294,13 +309,18 @@ body {
         font-size: 3em;
     }
 
-    /* Mobile adjustments (to make sure the targets are easier to see) */
+    /* Mobile adjustments (to make sure the targets for draggable characters are easier to see) */
     .collection-targets {
         gap: 15px;
     }
     .target-spot {
         width: 70px;
         height: 70px;
+    }
+
+    /* NEW: Shrink draggable characters on mobile */
+    .draggable {
+        width: 70px; /* Smaller size for phone screens */
     }
 }
 
