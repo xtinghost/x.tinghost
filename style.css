@@ -160,7 +160,7 @@ body {
     background: #E4DEE7; /* Light paper color */
     padding: 30px;
     text-align: center;
-    z-index: 2000; /* Above everything else */
+    z-index: 99999; /* Above everything else */
 }
 
 .great-job-image {
