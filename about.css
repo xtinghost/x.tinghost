@@ -72,7 +72,7 @@
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     
-    padding: 30px;
+    padding: 30px 30px 60px 30px;
     z-index: 20; /* Keep it above the image */
 }
 
