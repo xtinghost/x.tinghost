@@ -10,7 +10,7 @@
 .about-content {
     position: relative;
     width: 100%;
-    min-height: 200vh;
+    min-height: 1500vh;
     display: flex;
 }
 
@@ -60,7 +60,7 @@
     
     /* Center the text container vertically on the left side */
     width: 45%; 
-    max-width: 400px;
+    max-width: 80px;
     margin: 5% 0 0 5%; /* Push it down and right from the top-left corner */
     
     /* THE TRANSPARENT BOX STYLES */
