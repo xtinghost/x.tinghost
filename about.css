@@ -1,5 +1,5 @@
 /* ======================================= */
-/* 9. ABOUT PAGE SPECIFIC STYLES (Simple Bio Box) */
+/* ABOUT PAGE SPECIFIC STYLES (Simple Bio Box) */
 /* ======================================= */
 
 .about-page {
@@ -10,7 +10,7 @@
 .about-content {
     position: relative;
     width: 100%;
-    min-height: 90vh; 
+    height: 100%; 
     display: flex;
 }
 
