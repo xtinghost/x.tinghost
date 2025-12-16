@@ -1,0 +1,146 @@
+/* ======================================= */
+/* 9. ABOUT PAGE SPECIFIC STYLES */
+/* ======================================= */
+
+.about-page {
+    /* Override journal-page padding for a full-bleed image effect */
+    padding: 0;
+}
+
+.about-content {
+    position: relative;
+    width: 100%;
+    min-height: 90vh; /* Ensure it fills the height of the journal */
+    display: flex;
+}
+
+/* --- Image Container (Right Side) --- */
+.about-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.about-portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the area */
+    object-position: right top; /* Focus on the right side where you are standing */
+    opacity: 0.85; /* Slight transparency for text readability */
+}
+
+/* --- Text Overlay Container (Left Side) --- */
+.bio-text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55%; /* Dedicate the left side for text */
+    height: 100%;
+    padding: 30px;
+    /* Allows the user to interact with elements underneath this overlay layer */
+    pointer-events: none; 
+    z-index: 20;
+}
+
+.text-boxes-container {
+    position: relative;
+    margin-top: 20px;
+}
+
+/* --- Collage Text Box Base Styles --- */
+.box {
+    /* Base style for all floating text boxes */
+    position: absolute;
+    
+    /* Transparent Background: Very Light Grey Option */
+    background-color: rgba(255, 255, 255, 0.75); 
+    
+    /* Applies a subtle blur effect to the background, enhancing transparency */
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    
+    padding: 15px 20px;
+    border: 3px solid #333;
+    box-shadow: 4px 4px 0px 0px #333;
+    font-family: 'Georgia', serif; 
+    font-size: 1.3em;
+    line-height: 1.2;
+    /* Re-enable interaction for the box content so links/text are selectable */
+    pointer-events: auto; 
+}
+
+/* Specific Collage Positioning (Adjust these coordinates/rotations as needed) */
+
+.hello-box {
+    position: relative; /* Stays in normal flow at the top of the overlay */
+    font-size: 2em;
+    background-color: #fcfcf4; /* Match journal paper background */
+    width: 150px;
+    text-align: center;
+    top: -20px;
+    left: 10px;
+    transform: rotate(-3deg);
+}
+
+.passion-box {
+    top: 30px;
+    left: 150px;
+    width: 250px;
+    transform: rotate(4deg);
+    background-color: #d17a7a; 
+    color: white;
+    font-weight: bold;
+}
+
+.experience-box {
+    top: 180px;
+    left: 0;
+    width: 320px;
+    transform: rotate(-5deg);
+}
+
+.contact-box {
+    top: 350px;
+    left: 120px;
+    width: 250px;
+    transform: rotate(2deg);
+    background-color: #A1A0D2;
+}
+
+/* --- Mobile Responsiveness for About Page --- */
+@media (max-width: 600px) {
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .about-portrait {
+        position: relative; /* Image flows naturally */
+        height: 40vh; /* Shorter on mobile */
+        object-position: center top;
+        opacity: 1; /* Less transparency needed */
+    }
+    
+    .bio-text-overlay {
+        position: relative; /* Flows below the image */
+        width: 100%;
+        height: auto;
+        padding: 20px 10px;
+    }
+    
+    /* Stack the text boxes normally for mobile (remove floating/collage effect) */
+    .text-boxes-container {
+        margin-top: 10px;
+    }
+    .box {
+        position: relative;
+        transform: none; /* Remove rotation */
+        left: 0 !important;
+        top: 0 !important;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
