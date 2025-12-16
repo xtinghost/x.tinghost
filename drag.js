@@ -67,6 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
         char.style.zIndex = 1000;
         char.style.cursor = 'grab';
         
+        // **CRITICAL FIX ADDITION:** Update the character's internal coordinates 
+        // to match its final position on the screen, preventing the "jump" on the next drag.
+        char.currentX = parseFloat(char.style.left);
+        char.currentY = parseFloat(char.style.top);
+        
         // Check for snap only if the character is not already collected
         if (!collected[char.dataset.id]) {
             const target = targets[char.dataset.id];
