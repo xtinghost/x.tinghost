@@ -126,9 +126,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // SNAP TO TARGET!
             char.style.transition = 'top 0.3s, left 0.3s';
             
-            // Set position relative to the document using target Rect and scroll position
-            char.style.left = targetRect.left + window.scrollX + 'px'; 
-            char.style.top = targetRect.top + window.scrollY + 'px';
+            // Get the size of the target and the character
+            const targetRect = target.getBoundingClientRect();
+            const charWidth = char.offsetWidth; // Get the live width (100px or 70px)
+            const charHeight = char.offsetHeight; // Get the live height
+
+            // REVISED CALCULATION: Set position to top-left of target, then subtract half the character size
+            char.style.left = (targetRect.left + window.scrollX + (targetRect.width / 2) - (charWidth / 2)) + 'px'; 
+            char.style.top = (targetRect.top + window.scrollY + (targetRect.height / 2) - (charHeight / 2)) + 'px';
 
             // Lock the collected status
             collected[char.dataset.id] = true;
