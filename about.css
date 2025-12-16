@@ -29,7 +29,7 @@
     height: 100%;
     object-fit: cover; 
     object-position: right top; /* Focus on the right side where you are standing */
-    opacity: 0.85; /* Slight transparency for text readability */
+
 }
 
 /* --- Text Overlay Container (Fixed Left Box) --- */
@@ -44,6 +44,7 @@
     
     /* THE TRANSPARENT BOX STYLES */
     background-color: rgba(255, 255, 255, 0.9); /* Very Light Grey Transparent */
+    opacity: 0.85; /* Slight transparency for text readability */
     /* If you want dark transparent background, use: */
     /* background-color: rgba(51, 51, 51, 0.85); color: white; */
     
@@ -51,8 +52,6 @@
     -webkit-backdrop-filter: blur(4px);
     
     padding: 30px;
-    border: 3px solid #333;
-    box-shadow: 6px 6px 0px 0px #333;
     z-index: 20; /* Keep it above the image */
 }
 
@@ -70,7 +69,6 @@
     margin-bottom: 20px;
 }
 
-/* We don't need .text-boxes-container, .box, .hello-box, etc. anymore. */
 
 
 /* --- Mobile Responsiveness for About Page --- */
@@ -93,9 +91,5 @@
         max-width: 100%;
         margin: 20px auto; /* Center the box */
         
-        /* Reset background to solid white for better contrast on mobile */
-        background-color: #fcfcf4; 
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
     }
 }
