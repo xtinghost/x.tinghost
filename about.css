@@ -59,7 +59,7 @@
     position: relative;
     
     /* Center the text container vertically on the left side */
-    width: 45%; 
+    width: 60%; 
     max-width: 400px;
     margin: 5% 0 0 5%; /* Push it down and right from the top-left corner */
     
